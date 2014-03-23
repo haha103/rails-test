@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323141304) do
+ActiveRecord::Schema.define(version: 20140323150548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,8 +72,52 @@ ActiveRecord::Schema.define(version: 20140323141304) do
 
   add_index "districts", ["city_id"], name: "index_districts_on_city_id", using: :btree
 
+  create_table "emails", force: true do |t|
+    t.string   "addr"
+    t.boolean  "primary"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "activated"
+  end
+
+  add_index "emails", ["user_id"], name: "index_emails_on_user_id", using: :btree
+
+  create_table "phones", force: true do |t|
+    t.string   "number"
+    t.boolean  "mobile"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "activated"
+  end
+
+  add_index "phones", ["user_id"], name: "index_phones_on_user_id", using: :btree
+
   create_table "provinces", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.string   "name_en"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", id: false, force: true do |t|
+    t.integer "user_id", null: false
+    t.integer "role_id", null: false
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "user_name"
+    t.string   "name"
+    t.string   "id_num"
+    t.string   "login_pass"
+    t.string   "pay_pass"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_name: MyString
+  name: MyString
+  id_num: MyString
+  login_pass: MyString
+  pay_pass: MyString
+
+two:
+  user_name: MyString
+  name: MyString
+  id_num: MyString
+  login_pass: MyString
+  pay_pass: MyString

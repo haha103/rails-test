@@ -61,6 +61,9 @@ seed_banks
 
 # end of seeding of banks in China
 
+
+# seedings of bank_card_types
+
 def seed_bank_card_types
 	data = ActiveSupport::JSON.decode(File.read('db/seeds/bank_card_types.json'))
 	data.each do |d|
@@ -69,3 +72,19 @@ def seed_bank_card_types
 end
 
 seed_bank_card_types
+
+# end of seedings of bank_card_types
+
+
+# seeding roles
+
+def seed_roles
+	data = ActiveSupport::JSON.decode(File.read('db/seeds/roles.json'))
+	data.each do |d|
+		Role.create!(d)
+	end
+end
+
+seed_roles
+
+# end of seeding roles

@@ -1,0 +1,4 @@
+[
+	{ "name" : "用户", "name_en": "user" },
+	{ "name" : "管理员", "name_en": "admin" }
+]

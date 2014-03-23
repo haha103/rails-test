@@ -1,4 +1,12 @@
 RailsTest::Application.routes.draw do
+  resources :phones
+
+  resources :emails
+
+  resources :users
+
+  resources :roles
+
   resources :bank_accounts
 
   resources :bank_card_types
