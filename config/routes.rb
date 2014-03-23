@@ -1,4 +1,10 @@
 RailsTest::Application.routes.draw do
+  resources :districts
+
+  resources :cities
+
+  resources :provinces
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

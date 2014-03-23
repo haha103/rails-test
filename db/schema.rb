@@ -11,25 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321024335) do
+ActiveRecord::Schema.define(version: 20140323084301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "users", force: true do |t|
-    t.string   "user_name"
+  create_table "cities", force: true do |t|
     t.string   "name"
-    t.boolean  "admin"
-    t.boolean  "email_activated"
-    t.boolean  "mobile_activated"
-    t.boolean  "bankaccount_binded"
-    t.string   "id_card"
-    t.string   "addr_country"
-    t.string   "addr_province"
-    t.string   "addr_city"
-    t.string   "addr_details"
-    t.string   "mobile"
-    t.string   "additional_phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "province_id"
+  end
+
+  add_index "cities", ["province_id"], name: "index_cities_on_province_id", using: :btree
+
+  create_table "districts", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "city_id"
+  end
+
+  add_index "districts", ["city_id"], name: "index_districts_on_city_id", using: :btree
+
+  create_table "provinces", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
