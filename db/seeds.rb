@@ -48,3 +48,15 @@ end
 
 seed_admin_divs
 # end of seeding administrative regions
+
+# seeding of banks in China
+def seed_banks
+	data = ActiveSupport::JSON.decode(File.read('db/seeds/banks.json'))
+	data.each do |d|
+		Bank.create!(d)
+	end
+end
+
+seed_banks
+
+# end of seeding of banks in China

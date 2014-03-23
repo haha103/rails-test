@@ -1,4 +1,8 @@
 RailsTest::Application.routes.draw do
+  resources :bank_branches
+
+  resources :banks
+
   resources :districts
 
   resources :cities
