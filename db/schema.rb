@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323132354) do
+ActiveRecord::Schema.define(version: 20140323141304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bank_accounts", force: true do |t|
+    t.string   "account"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "bank_card_type_id"
+    t.integer  "bank_id"
+  end
+
+  add_index "bank_accounts", ["bank_card_type_id"], name: "index_bank_accounts_on_bank_card_type_id", using: :btree
+  add_index "bank_accounts", ["bank_id"], name: "index_bank_accounts_on_bank_id", using: :btree
 
   create_table "bank_branches", force: true do |t|
     t.string   "name"
@@ -28,6 +39,12 @@ ActiveRecord::Schema.define(version: 20140323132354) do
   add_index "bank_branches", ["bank_id"], name: "index_bank_branches_on_bank_id", using: :btree
   add_index "bank_branches", ["city_id"], name: "index_bank_branches_on_city_id", using: :btree
   add_index "bank_branches", ["province_id"], name: "index_bank_branches_on_province_id", using: :btree
+
+  create_table "bank_card_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "banks", force: true do |t|
     t.string   "name"

@@ -1,0 +1,27 @@
+<h1>Listing bank_card_types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bank_card_types.each do |bank_card_type| %>
+      <tr>
+        <td><%= bank_card_type.name %></td>
+        <td><%= link_to 'Show', bank_card_type %></td>
+        <td><%= link_to 'Edit', edit_bank_card_type_path(bank_card_type) %></td>
+        <td><%= link_to 'Destroy', bank_card_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bank card type', new_bank_card_type_path %>

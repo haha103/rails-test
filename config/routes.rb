@@ -1,4 +1,8 @@
 RailsTest::Application.routes.draw do
+  resources :bank_accounts
+
+  resources :bank_card_types
+
   resources :bank_branches
 
   resources :banks

@@ -60,3 +60,12 @@ end
 seed_banks
 
 # end of seeding of banks in China
+
+def seed_bank_card_types
+	data = ActiveSupport::JSON.decode(File.read('db/seeds/bank_card_types.json'))
+	data.each do |d|
+		BankCardType.create!(d)
+	end
+end
+
+seed_bank_card_types
