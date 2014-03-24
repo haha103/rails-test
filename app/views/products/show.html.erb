@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Target amount:</strong>
+  <%= @product.target_amount %>
+</p>
+
+<p>
+  <strong>Target amount min:</strong>
+  <%= @product.target_amount_min %>
+</p>
+
+<p>
+  <strong>Interest platform:</strong>
+  <%= @product.interest_platform %>
+</p>
+
+<p>
+  <strong>Interest investor:</strong>
+  <%= @product.interest_investor %>
+</p>
+
+<p>
+  <strong>Invest start:</strong>
+  <%= @product.invest_start %>
+</p>
+
+<p>
+  <strong>Invest end:</strong>
+  <%= @product.invest_end %>
+</p>
+
+<p>
+  <strong>Refund date:</strong>
+  <%= @product.refund_date %>
+</p>
+
+<p>
+  <strong>Purpose summary:</strong>
+  <%= @product.purpose_summary %>
+</p>
+
+<p>
+  <strong>Purpose detail:</strong>
+  <%= @product.purpose_detail %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

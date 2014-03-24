@@ -1,0 +1,29 @@
+<h1>Listing guarantees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Letter code</th>
+      <th>Letter scan</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guarantees.each do |guarantee| %>
+      <tr>
+        <td><%= guarantee.letter_code %></td>
+        <td><%= guarantee.letter_scan %></td>
+        <td><%= link_to 'Show', guarantee %></td>
+        <td><%= link_to 'Edit', edit_guarantee_path(guarantee) %></td>
+        <td><%= link_to 'Destroy', guarantee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Guarantee', new_guarantee_path %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Letter code:</strong>
+  <%= @guarantee.letter_code %>
+</p>
+
+<p>
+  <strong>Letter scan:</strong>
+  <%= @guarantee.letter_scan %>
+</p>
+
+<%= link_to 'Edit', edit_guarantee_path(@guarantee) %> |
+<%= link_to 'Back', guarantees_path %>

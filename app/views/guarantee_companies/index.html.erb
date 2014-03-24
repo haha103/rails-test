@@ -1,0 +1,27 @@
+<h1>Listing guarantee_companies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guarantee_companies.each do |guarantee_company| %>
+      <tr>
+        <td><%= guarantee_company.name %></td>
+        <td><%= link_to 'Show', guarantee_company %></td>
+        <td><%= link_to 'Edit', edit_guarantee_company_path(guarantee_company) %></td>
+        <td><%= link_to 'Destroy', guarantee_company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Guarantee company', new_guarantee_company_path %>

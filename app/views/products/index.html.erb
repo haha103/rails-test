@@ -1,0 +1,43 @@
+<h1>Listing products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Target amount</th>
+      <th>Target amount min</th>
+      <th>Interest platform</th>
+      <th>Interest investor</th>
+      <th>Invest start</th>
+      <th>Invest end</th>
+      <th>Refund date</th>
+      <th>Purpose summary</th>
+      <th>Purpose detail</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.target_amount %></td>
+        <td><%= product.target_amount_min %></td>
+        <td><%= product.interest_platform %></td>
+        <td><%= product.interest_investor %></td>
+        <td><%= product.invest_start %></td>
+        <td><%= product.invest_end %></td>
+        <td><%= product.refund_date %></td>
+        <td><%= product.purpose_summary %></td>
+        <td><%= product.purpose_detail %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>

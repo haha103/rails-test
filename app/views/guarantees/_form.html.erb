@@ -1,0 +1,25 @@
+<%= form_for(@guarantee) do |f| %>
+  <% if @guarantee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@guarantee.errors.count, "error") %> prohibited this guarantee from being saved:</h2>
+
+      <ul>
+      <% @guarantee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :letter_code %><br>
+    <%= f.text_field :letter_code %>
+  </div>
+  <div class="field">
+    <%= f.label :letter_scan %><br>
+    <%= f.text_field :letter_scan %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

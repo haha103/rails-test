@@ -88,3 +88,28 @@ end
 seed_roles
 
 # end of seeding roles
+
+# seeding refund_types
+
+def seed_refund_types
+	data = ActiveSupport::JSON.decode(File.read('db/seeds/refund_types.json'))
+	data.each do |d|
+		RefundType.create!(d)
+	end
+end
+
+seed_refund_types
+
+# end of seeding refund_types
+
+# seeding of product_statuses
+
+ActiveSupport::JSON.decode(File.read('db/seeds/product_statuses.json')).each do |d|
+	ProductStatus.create!(d)
+end
+
+# end of seeding product_statuses
+
+ActiveSupport::JSON.decode(File.read('db/seeds/guarantee_companies.json')).each do |d|
+	GuaranteeCompany.create!(d)
+end

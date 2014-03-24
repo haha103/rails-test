@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  target_amount: 1
+  target_amount_min: 1
+  interest_platform: 1.5
+  interest_investor: 1.5
+  invest_start: 2014-03-24
+  invest_end: 2014-03-24
+  refund_date: 2014-03-24
+  purpose_summary: MyString
+  purpose_detail: MyText
+
+two:
+  target_amount: 1
+  target_amount_min: 1
+  interest_platform: 1.5
+  interest_investor: 1.5
+  invest_start: 2014-03-24
+  invest_end: 2014-03-24
+  refund_date: 2014-03-24
+  purpose_summary: MyString
+  purpose_detail: MyText

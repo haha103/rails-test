@@ -1,0 +1,27 @@
+<h1>Listing refund_types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @refund_types.each do |refund_type| %>
+      <tr>
+        <td><%= refund_type.name %></td>
+        <td><%= link_to 'Show', refund_type %></td>
+        <td><%= link_to 'Edit', edit_refund_type_path(refund_type) %></td>
+        <td><%= link_to 'Destroy', refund_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Refund type', new_refund_type_path %>

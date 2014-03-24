@@ -1,4 +1,16 @@
 RailsTest::Application.routes.draw do
+  resources :products
+
+  resources :product_statuses
+
+  resources :refund_types
+
+  resources :guarantees
+
+  resources :guarantee_companies
+
+  resources :borrowers
+
   resources :phones
 
   resources :emails
