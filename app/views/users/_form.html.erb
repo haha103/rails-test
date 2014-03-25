@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, html: { class: "form-horizontal", id: "haha-form-signup" }) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,27 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_name %><br>
-    <%= f.text_field :user_name %>
+	<%= render partial: "form_group_horizontal", locals: { field: :user_name, field_desc: "用户名", field_tooltip: "用户名为6-20位字母或数字字母下划线组合", f: f } %>
+	<%= render partial: "form_group_horizontal", locals: { field: :name, field_desc: "姓名", field_tooltip: "您的真实姓名", f: f } %>
+	<%= render partial: "form_group_horizontal", locals: { field: :id_num, field_desc: "身份证号码", field_tooltip: "你的15位或者18位身份证号码", f: f } %>
+	<%= render partial: "form_group_horizontal", locals: { field: :login_pass, field_desc: "登录密码", field_tooltip: "请选择一个安全的密码，最好是字母、数字和符号的组合", f: f } %>
+	<%= render partial: "form_group_horizontal", locals: { field: :login_pass, field_desc: "重复登录密码", field_tooltip: "请再次输入登录密码", f: f } %>
+	<%= f.fields_for :emails do |emails_form| %>
+		<%= render partial: "form_group_horizontal", locals: { field: :addr, field_desc: "邮箱地址", field_tooltip: "你的电子邮箱地址（第一个邮箱为你的主邮箱）", f: emails_form } %>
+	<% end %>
+
+	<%= f.fields_for :phones do |phones_form| %>
+		<%= render partial: "form_group_horizontal", locals: { field: :number, field_desc: "联系电话", field_tooltip: "你的联系电话（第一个邮箱为你的主要联系电话）", f: phones_form } %>
+	<% end %>
+
+	<div class='row'>
+    <div class="col-md-4 col-md-offset-2">
+      <div class="checkbox">
+        <label for="">
+          <input type="checkbox" name="agreement_acknowledged" /> 我同意<a href="#">用户注册须知</a>里面的所有条款
+        </label>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :id_num %><br>
-    <%= f.text_field :id_num %>
-  </div>
-  <div class="field">
-    <%= f.label :login_pass %><br>
-    <%= f.text_field :login_pass %>
-  </div>
-  <div class="field">
-    <%= f.label :pay_pass %><br>
-    <%= f.text_field :pay_pass %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	
+  <br/>
+
+  <div class="row">
+		<div class="col-md-2 col-md-offset-2">
+			<%= f.submit "创建", class: "btn btn-primary btn-block haha-btn-toggle" %>			
+		</div>
+	</div>
+	
 <% end %>

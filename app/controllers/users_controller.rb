@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+	before_action :init
+	
   # GET /users
   # GET /users.json
   def index
@@ -15,6 +17,8 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+		1.times { @user.emails.build }
+		1.times { @user.phones.build }
   end
 
   # GET /users/1/edit
@@ -24,17 +28,23 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+		puts "#{params.inspect}"
+
+		@user = User.new
+		render action: 'new'
+		
+#    @user = User.new(user_params)
+#
+#    respond_to do |format|
+#      if @user.save
+#        format.html { redirect_to @user, notice: 'User was successfully created.' }
+#        format.json { render action: 'show', status: :created, location: @user }
+#      else
+#        format.html { render action: 'new' }
+#        format.json { render json: @user.errors, status: :unprocessable_entity }
+#      end
+#    end
   end
 
   # PATCH/PUT /users/1
@@ -71,4 +81,8 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:user_name, :name, :id_num, :login_pass, :pay_pass)
     end
+
+		def init
+			@user_create_phases = [ "账户注册", "邮箱绑定", "银行卡绑定", "注册完成" ]
+		end
 end
