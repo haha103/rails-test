@@ -1,28 +1,24 @@
-<h1>Listing provinces</h1>
+<h1>省份列表</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+	<table class="table table-condensed table-hover">
+		<thead>
+			<tr>
+				<th>名称</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
 
-  <tbody>
-    <% @provinces.each do |province| %>
-      <tr>
-        <td><%= province.name %></td>
-        <td><%= link_to 'Show', province %></td>
-        <td><%= link_to 'Edit', edit_province_path(province) %></td>
-        <td><%= link_to 'Destroy', province, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+		<tbody>
+			<%= render partial: "shared/dict_collection", collection: @provinces, as: :item %>
+		</tbody>
+	</table>
+</div>
 
-<%= will_paginate @provinces, renderer: BootstrapPagination::Rails %>
+
+<%= will_paginate @provinces, renderer: BootstrapPagination::Rails, class: "pagination-sm" %>
 
 <br>
 

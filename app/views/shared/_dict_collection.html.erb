@@ -1,0 +1,13 @@
+<% cell_btn_class = "btn btn-primary btn-xs btn-block" %>
+<tr>
+	<td><%= item.name %></td>
+	<td style="width:50px;">
+		<%= link_to '详情', item, class: cell_btn_class %>
+	</td>
+	<td style="width:50px;">
+		<%= link_to '修改', edit_polymorphic_path(item), class: cell_btn_class %>
+	</td>
+	<td style="width:50px;">
+		<%= link_to '删除', item, method: :delete, data: { confirm: 'Are you sure?' }, class: cell_btn_class %>
+	</td>
+</tr>
