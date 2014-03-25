@@ -46,3 +46,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# will_paginate-bootstrap
+gem 'will_paginate-bootstrap'

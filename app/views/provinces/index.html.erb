@@ -22,6 +22,8 @@
   </tbody>
 </table>
 
+<%= will_paginate @provinces, renderer: BootstrapPagination::Rails %>
+
 <br>
 
 <%= link_to 'New Province', new_province_path %>
