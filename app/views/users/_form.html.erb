@@ -24,6 +24,8 @@
 		<%= render partial: "form_group_horizontal", locals: { field: :number, field_desc: "联系电话", field_tooltip: "你的联系电话（第一个邮箱为你的主要联系电话）", f: phones_form } %>
 	<% end %>
 
+	<%= recaptcha_tags :ajax => true, :display => { :theme => "clean" } %>
+
 	<div class='row'>
     <div class="col-md-4 col-md-offset-2">
       <div class="checkbox">

@@ -49,3 +49,4 @@ end
 
 # will_paginate-bootstrap
 gem 'will_paginate-bootstrap'
+gem "recaptcha", :require => "recaptcha/rails"
