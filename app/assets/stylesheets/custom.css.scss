@@ -407,3 +407,16 @@ table a, .table a {
 .form-horizontal .control-label, .form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline {
 	padding-top: 9px;
 }
+
+div#recaptcha_image {
+	height: 39px !important;
+	width: 100% !important;
+	border: 1px;
+	border-color: $lightGray5;
+	border-style: solid;
+}
+
+img#recaptcha_challenge_image {
+	height: 100% !important;
+	width: 100% !important;
+}
