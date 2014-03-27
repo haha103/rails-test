@@ -11,6 +11,5 @@
  *= require bootstrap
  *= require jasny-bootstrap
  *= require custom
- *= require_tree .
- *= require_self
+  *= require_self
  */
