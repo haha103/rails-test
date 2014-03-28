@@ -50,3 +50,5 @@ end
 # will_paginate-bootstrap
 gem 'will_paginate-bootstrap'
 gem "recaptcha", :require => "recaptcha/rails"
+gem 'font-awesome-sass'
+gem 'bcrypt', :require => 'bcrypt'

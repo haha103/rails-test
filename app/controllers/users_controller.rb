@@ -29,22 +29,20 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
 
-		puts "#{params.inspect}"
-
-		@user = User.new
-		render action: 'new'
+		@user = User.new(user_params)
+		# encrypt as early as possible
+		@user.login_pass = BCrypt::Password.create(params[:user][:login_pass])
 		
-#    @user = User.new(user_params)
-#
-#    respond_to do |format|
-#      if @user.save
-#        format.html { redirect_to @user, notice: 'User was successfully created.' }
-#        format.json { render action: 'show', status: :created, location: @user }
-#      else
-#        format.html { render action: 'new' }
-#        format.json { render json: @user.errors, status: :unprocessable_entity }
-#      end
-#    end
+    respond_to do |format|
+      if verify_recaptcha(:model => @user, :message => "验证码输入错误") && @user.save
+        format.html { redirect_to @user, notice: '新用户创建成功' }
+        format.json { render action: 'show', status: :created, location: @user }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+		
   end
 
   # PATCH/PUT /users/1
@@ -79,7 +77,12 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:user_name, :name, :id_num, :login_pass, :pay_pass)
+      params.require(:user).permit(:user_name,
+																	 :name,
+																	 :id_num,
+																	 #:login_pass, 
+																	 emails_attributes: [:id, :addr],
+																	 phones_attributes: [:id, :number])
     end
 
 		def init
