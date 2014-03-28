@@ -69,6 +69,15 @@ class UsersController < ApplicationController
     end
   end
 
+	def exists
+		user = params[:user]
+		result = "false"
+		if user
+			result = "true" if User.where("user_name = ? OR name = ? OR id_num = ?", user[:user_name], user[:name], user[:id_num]).length > 0
+		end		
+		render json: "{ \"result\": #{result} }"
+	end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
