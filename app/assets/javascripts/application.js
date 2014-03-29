@@ -16,3 +16,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require jasny-bootstrap
+//= require shared/common
+//= require_tree ./shared

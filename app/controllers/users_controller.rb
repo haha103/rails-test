@@ -74,6 +74,8 @@ class UsersController < ApplicationController
 		result = "false"
 		if user
 			result = "true" if User.where("user_name = ? OR name = ? OR id_num = ?", user[:user_name], user[:name], user[:id_num]).length > 0
+			result = "true" if user[:emails_attributes] && Email.joins(:user).where("emails.addr = ?", user[:emails_attributes].values.first[:addr]).length > 0
+			result = "true" if user[:phones_attributes] && Phone.joins(:user).where("phones.number = ?", user[:phones_attributes].values.first[:number]).length > 0
 		end		
 		render json: "{ \"result\": #{result} }"
 	end
