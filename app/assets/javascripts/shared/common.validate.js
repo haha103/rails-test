@@ -58,3 +58,4 @@ function ajaxValidate(url, params) {
   //console.log(result);
   return result;
 }
+
