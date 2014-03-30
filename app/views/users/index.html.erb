@@ -1,13 +1,15 @@
-<h1>Listing users</h1>
-
-<table>
+<h2 style="margin-top:25px;">用户管理</h2>
+<hr/>
+<table class="table table-hover table-condensed haha-table-compact">
   <thead>
     <tr>
-      <th>User name</th>
-      <th>Name</th>
-      <th>Id num</th>
-      <th>Login pass</th>
-      <th>Pay pass</th>
+      <th>#</th>
+      <th>用户名</th>
+      <th>姓名</th>
+      <th>身份证号码</th>
+      <th>邮箱</th>
+      <th>联系电话</th>
+			<th>特殊角色</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,19 +19,19 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td style="width:5px;"><%= user.id %></td>
         <td><%= user.user_name %></td>
-        <td><%= user.name %></td>
-        <td><%= user.id_num %></td>
-        <td><%= user.login_pass %></td>
-        <td><%= user.pay_pass %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="width:70px;"><%= user.name %></td>
+        <td style="width:165px;"><%= user.id_num %></td>
+        <td><%= user.emails.map { |i| i.addr }.join(", ") %></td>
+        <td><%= user.phones.map { |i| i.number }.join(", ") %></td>
+				<td><%= user.roles.map { |i| i.name }.join(", ") %></td>
+        <td style="width:50px;"><%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, user, class: "btn btn-success btn-xs btn-block" %></td>
+        <td style="width:50px;"><%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_user_path(user), class: "btn btn-warning btn-xs btn-block" %></td>
+        <td style="width:50px;"><%= link_to "<span class=\"glyphicon glyphicon-trash\"></span>".html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs btn-block" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New User', new_user_path %>
+<%= will_paginate @users, renderer: BootstrapPagination::Rails, class: "pagination-sm" %>
