@@ -1,0 +1,22 @@
+[
+	{
+		"user_name": "haha103",
+		"name": "刘玮",
+		"id_num": "510105198406132534",
+		"login_pass": "haha103",
+		"pay_pass": "haha103",
+		"emails": [ "wliu272@163.com" ],
+		"phones": [ "13548140663" ],
+		"roles": [ "user", "admin" ]
+	},
+	{
+		"user_name": "haha104",
+		"name": "刘玮1",
+		"id_num": "510105198406132227",
+		"login_pass": "haha104",
+		"pay_pass": "haha104",
+		"emails": [ "wliu273@163.com" ],
+		"phones": [ "13548140664" ],
+		"roles": [ "user" ]
+	}
+]

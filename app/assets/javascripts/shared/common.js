@@ -1,3 +1,7 @@
+/*jslint indent: 2, browser: true */
+/*global $ */
+"use strict";
+
 function recaptcha_preview() {
   $('div#recaptcha_image').popover({
     html: true,
@@ -11,6 +15,6 @@ function recaptcha_preview() {
 
 function input_tooltip() {
   $('input').tooltip({
-		delay: 200
-	});
+    delay: 200
+  });
 }

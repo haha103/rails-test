@@ -113,3 +113,22 @@ end
 ActiveSupport::JSON.decode(File.read('db/seeds/guarantee_companies.json')).each do |d|
 	GuaranteeCompany.create!(d)
 end
+
+ActiveSupport::JSON.decode(File.read('db/seeds/users.json')).each do |d|
+	user = User.new
+	user.user_name = d["user_name"]
+	user.name = d["name"]
+	user.id_num = d["id_num"]
+	user.login_pass = BCrypt::Password.create(d["login_pass"])
+	user.pay_pass = BCrypt::Password.create(d["pay_pass"])
+	d["emails"].each do |email|
+		user.emails << Email.new(:addr => email)
+	end
+	d["phones"].each do |phone|
+		user.phones << Phone.new(:number => phone)
+	end
+	d["roles"].each do |role|
+		user.roles << Role.find_by(:name_en => role)
+	end
+	user.save
+end

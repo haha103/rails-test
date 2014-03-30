@@ -1,0 +1,74 @@
+<% if @session.errors.any? %>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-2">
+			<div class="alert alert-danger">
+				<strong>登录失败，因为：</strong>
+				<ul>
+					<% @session.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+<% end %>
+<div class="haha-transparent-box">
+	<h3 style="margin-top: 0px;margin-bottom: 15px; color:white;">用户登录</h3>
+	<%= form_for(@session, html: { class: "haha-form-in-transbox" }) do |f| %>
+		<div class='form-group'>
+			<div class="input-group">
+				<span class="input-group-addon glyphicon glyphicon-user" style="top:0px;"></span>
+				<input type='text' class='form-control' name='session[user_name]' id="session_user_name"></input>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="input-group">
+				<span class="input-group-addon glyphicon glyphicon-lock" style="top:0px;"></span>
+				<input type='password' class='form-control' name='session[login_pass]' id="session_login_pass"></input>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div id="recaptcha-widget">
+				<div class="row">
+					<div class="col-md-7 haha-rcompact-col">
+						<div class="input-group">
+							<span class="input-group-addon glyphicon glyphicon-qrcode" style="top:0px;"></span>
+							<input type="text" id="recaptcha_response_field" name="recaptcha_response_field" class="form-control" />
+							<span class="input-group-btn">
+								<a type="button" class="btn btn-default" href="javascript:Recaptcha.reload()">
+									<span class="glyphicon glyphicon-refresh"></span>
+								</a>
+							</span>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div id="recaptcha_image">
+						</div>
+					</div>
+				</div>
+			</div>
+			<%= recaptcha_tags :ajax => true,
+					:display => {
+						:theme => "custom",
+						:custom_theme_widget => 'recaptcha_widget',
+						:custom_translations => {
+							refresh_btn: "重新生成验证码",
+							help_btn: "帮助",
+							incorrect_try_again: "输入不正确，请重试",
+							visual_challenge: "图片验证码",
+							audio_chanlleng: "音频验证码",
+							play_again: "重新播放",
+							instructions_visual: "请输入图片验证码",
+							instructions_audio: "请输入音频验证码",
+							privacy_and_terms: "隐私条款"
+						}
+					}
+			%>
+		</div>
+		<br/>
+		<button type="submit" class="btn btn-primary btn-block haha-btn-toggle">登录</button>
+	<% end %>
+</div>
+
+
