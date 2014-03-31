@@ -1,0 +1,25 @@
+<%= form_for(@session_operation) do |f| %>
+  <% if @session_operation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@session_operation.errors.count, "error") %> prohibited this session_operation from being saved:</h2>
+
+      <ul>
+      <% @session_operation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :name_en %><br>
+    <%= f.text_field :name_en %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

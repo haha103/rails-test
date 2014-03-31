@@ -1,0 +1,4 @@
+[
+	{ "name": "登录", "name_en": "create" },
+	{ "name": "注销", "name_en": "destroy" }
+]

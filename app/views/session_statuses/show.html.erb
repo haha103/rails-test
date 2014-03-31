@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @session_status.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @session_status.name %>
+</p>
+
+<%= link_to 'Edit', edit_session_status_path(@session_status) %> |
+<%= link_to 'Back', session_statuses_path %>

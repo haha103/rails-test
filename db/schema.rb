@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140330131809) do
+ActiveRecord::Schema.define(version: 20140330233540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,10 +172,32 @@ ActiveRecord::Schema.define(version: 20140330131809) do
     t.integer "role_id", null: false
   end
 
-  create_table "sessions", force: true do |t|
+  create_table "session_operations", force: true do |t|
+    t.string   "name"
+    t.string   "name_en"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "session_statuses", force: true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sessions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "client_ip"
+    t.integer  "session_operation_id"
+    t.integer  "session_status_id"
+    t.integer  "user_id"
+  end
+
+  add_index "sessions", ["session_operation_id"], name: "index_sessions_on_session_operation_id", using: :btree
+  add_index "sessions", ["session_status_id"], name: "index_sessions_on_session_status_id", using: :btree
+  add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "user_name"

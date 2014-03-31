@@ -1,5 +1,9 @@
 RailsTest::Application.routes.draw do
 
+  resources :session_statuses
+
+  resources :session_operations
+
   resources :sessions
 
 	get 'users/exists' => "users#exists"

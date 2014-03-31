@@ -1,0 +1,29 @@
+<h1>Listing session_operations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Name en</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @session_operations.each do |session_operation| %>
+      <tr>
+        <td><%= session_operation.name %></td>
+        <td><%= session_operation.name_en %></td>
+        <td><%= link_to 'Show', session_operation %></td>
+        <td><%= link_to 'Edit', edit_session_operation_path(session_operation) %></td>
+        <td><%= link_to 'Destroy', session_operation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Session operation', new_session_operation_path %>

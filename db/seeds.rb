@@ -132,3 +132,11 @@ ActiveSupport::JSON.decode(File.read('db/seeds/users.json')).each do |d|
 	end
 	user.save
 end
+
+ActiveSupport::JSON.decode(File.read('db/seeds/session_operations.json')).each do |d|
+	SessionOperation.create!(d)
+end
+
+ActiveSupport::JSON.decode(File.read('db/seeds/session_statuses.json')).each do |d|
+	SessionStatus.create!(d)
+end
