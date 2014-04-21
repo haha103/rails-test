@@ -25,18 +25,18 @@ class SessionsController < ApplicationController
   # POST /sessions
   # POST /sessions.json
   def create
-		session = Session.new
-		session.client_ip = request.remote_ip
-		session.session_operation = SessionOperation.find_by(:name_en => "create")
+		@session = Session.new
+		@session.client_ip = request.remote_ip
+		@session.session_operation = SessionOperation.find_by(:name_en => "create")
 		user = User.find_by(:user_name => session_params[:user_name])
 		redirect_to "/sessions/new", notice: "用户不存在" unless user
 		if (BCrypt::Password.new(user.login_pass) == session_params[:login_pass])
-			session.session_status = SessionStatus.find_by(:code => "200")
-			session.save
+			@session.session_status = SessionStatus.find_by(:code => "200")
+			@session.save
 			redirect_to "/users/#{user.id}"
 		else
-			session.session_status = SessionStatus.find_by(:code => "402")
-			session.save
+			@session.session_status = SessionStatus.find_by(:code => "402")
+			@session.save
 			redirect_to "/sessions/new", notice: "密码错误"
 		end
   end

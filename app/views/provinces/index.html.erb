@@ -1,5 +1,9 @@
-<h1>省份列表</h1>
-
+<br/>
+<div class="row">
+	<div class="col-md-2 col-md-offset-10">
+		<%= link_to '新增省份', new_province_path, class: "btn btn-primary btn-sm pull-right" %>
+	</div>
+</div>
 <div class="table-responsive">
 	<table class="table table-condensed table-hover haha-table-compact">
 		<thead>
@@ -17,9 +21,4 @@
 	</table>
 </div>
 
-
 <%= will_paginate @provinces, renderer: BootstrapPagination::Rails, class: "pagination-sm" %>
-
-<br>
-
-<%= link_to 'New Province', new_province_path %>

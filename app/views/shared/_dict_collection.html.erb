@@ -1,13 +1,13 @@
-<% cell_btn_class = "btn btn-primary btn-xs btn-block" %>
+<% cell_btn_class = "btn btn-xs btn-block" %>
 <tr>
 	<td><%= item.name %></td>
 	<td style="width:50px;">
-		<%= link_to '详情', item, class: cell_btn_class %>
+		<%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, item, class: "#{cell_btn_class} btn-success" %>
 	</td>
 	<td style="width:50px;">
-		<%= link_to '修改', edit_polymorphic_path(item), class: cell_btn_class %>
+		<%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_polymorphic_path(item), class: "#{cell_btn_class} btn-warning" %>
 	</td>
 	<td style="width:50px;">
-		<%= link_to '删除', item, method: :delete, data: { confirm: 'Are you sure?' }, class: cell_btn_class %>
+		<%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, item, method: :delete, data: { confirm: 'Are you sure?' }, class: "#{cell_btn_class} btn-danger" %>
 	</td>
 </tr>
